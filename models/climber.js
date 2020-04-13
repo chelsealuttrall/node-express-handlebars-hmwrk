@@ -1,17 +1,15 @@
-module.exports = function(sequelize, DataTypes) {
-    var Climber = sequelize.define("Climber", {
+var sequelize = require("sequelize")
+
+var climber = sequelize.define("Climber", {
       name: {
         type: DataTypes.STRING
       }
     });
   
-    Climber.associate = function(models) {
+    climber.associate = function(models) {
   
-      Climber.hasMany(models.Fourteeners, {
+      climber.hasMany(models.Fourteeners, {
         onDelete: "cascade"
       });
-    };
-  
-    return Climber;
-  };
-  
+    }
+  module.exports = climber;
