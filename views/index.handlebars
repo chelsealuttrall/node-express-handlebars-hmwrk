@@ -1,64 +1,38 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <img src="" height="200" class="center-block">
-      <h1 class="text-center title">Track Your Summits</h1>
-    </div>
-  </div>
-  <br>
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-      <div>
-        {{#each fourteeners}}
-          {{#unless this.climbed}}
-            <div class="row">
-              <div class="col-md-9">
-              <div class="tobeclimbed">
-                <p class="text-center">
-                {{this.id}}. {{this.fourteener_name}}
-                </p>
-              </div>
-              </div>
-              <div class="col-md-3">
-              <div>
-              <form action="/{{this.id}}" method="POST">
-                  <input type="text" id="ca" name="climber" class="center-block">
-                <input type="hidden" name="climbed" value="true">
-                <button type="submit" class="center-block">Summited It</button>
-              </form>
-              </div>
-              </div>
-            </div>
-          {{/unless}}
-        {{/each}}
-      </div>
-    </div>
-    <div class="col-md-3">
-        {{#each fourteeners}}
-          {{#if this.climbed}}
-            <div class="climbed">
-            <p class="text-center">
-              {{this.id}}. {{this.fourteener_name}} {{#if this.Climber.name}}(Climbed by {{this.Climber.name}}){{/if}}
-            </p>
-            </div>
-          {{/if}}
-        {{/each}}
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <form class="create-update-form" action="/" method="POST">
+<h1>The Mountains Are Calling!</h1>
 
-        <div class="form-group">
-          {{!-- <label for="ca">Burger Name:</label> --}}
-          <input type="text" id="ca" name="name" class="center-block fourteener_field">
-        </div>
+<h2>Fourteeners That Want You to Summit Them</h2>
 
-        <button type="submit" class="center-block btn btn-primary">Submit</button>
-        <p class="text-center">Enter the 14er you want to climb and click the "Submit" button</p>
-      </form>
-    </div>
+<ul>
+  {{#each fourteeners}}
+    {{#unless climbed}}
+      {{> fourteeners/fourteener-block climbed=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Summited Fourteeners</h2>
+
+<ul>
+  {{#each fourteeners}}
+    {{#if climbed}}
+      {{> fourteeners/fourteener-block climbed=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a 14er</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="14er">14er Name:</label>
+    <input type="text" id="ca" name="name">
   </div>
 
-</div>
+  <div class="form-group">
+    <label for="climbed">Climbed?</label><br>
+    <input type="radio" name="climbed" value="1" checked> Summited!<br>
+    <input type="radio" name="climbed" value="0"> Waiting to be summited.
+  </div>
+
+  <button type="submit">Add 14er</button>
+</form>

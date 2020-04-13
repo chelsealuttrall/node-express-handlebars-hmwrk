@@ -1,5 +1,4 @@
 var express = require("express");
-var sequelize = require("sequelize")
 
 var PORT = process.env.PORT || 3000;
 
@@ -25,8 +24,7 @@ var routes = require("./routes/14er-api-routes.js");
 
 app.use(routes);
 
-db.sequelize.sync({ force: true }).then(function() {
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
+
+app.listen(PORT, function() {
+    console.log("App now listening at localhost:" + PORT);
   });
-});
