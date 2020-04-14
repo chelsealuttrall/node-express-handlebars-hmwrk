@@ -26,7 +26,7 @@ $(function() {
       event.preventDefault();
   
       var newFourteener = {
-        name: $("#14ers").val().trim(),
+        name: $("#14er").val().trim(),
         climbed: $("[name=climbed]:checked").val().trim()
       };
   

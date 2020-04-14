@@ -4,24 +4,28 @@ var router = express.Router();
 
 var fourteener = require("../models/14ers.js");
 
+
 // Create all our routes and set up logic within those routes where required.
+
 router.get("/", function(req, res) {
-  fourteener.selectAll(function(data) {
-    var hbsObject = {
-      fourteener: data
+  fourteener.all(function(data) {
+    var fourteenerObject = {
+      fourteeners: data
     };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+    console.log(fourteenerObject);
+    res.render("index", fourteenerObject);
   });
 });
 
+
 router.post("/api/14ers", function(req, res) {
   fourteener.create(["14er", "climbed"], [req.body.name, req.body.climbed], function(res) {
-    res.json({id: res.insertId});
+    res.json({id: result.insertId});
     res.redirect("/");
   });
 
 });
+
 
 router.put("/api/14ers/:id", function(req, res) {
   var condition = "id = " + req.params.id;

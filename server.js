@@ -4,7 +4,6 @@ var PORT = process.env.PORT || 3000;
 
 var app = express();
 
-var db = require("./models");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -20,7 +19,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 // Import routes and give the server access to them.
-var routes = require("./routes/14er-api-routes.js");
+var routes = require("./controllers/14ers_controller.js");
 
 app.use(routes);
 
