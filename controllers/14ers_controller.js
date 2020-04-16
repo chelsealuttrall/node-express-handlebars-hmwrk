@@ -9,11 +9,11 @@ var fourteener = require("../models/14ers.js");
 
 router.get("/", function(req, res) {
   fourteener.all(function(data) {
-    var fourteenerObject = {
+    var handlebarsObject = {
       fourteeners: data
     };
-    console.log(fourteenerObject);
-    res.render("index", fourteenerObject);
+    console.log(handlebarsObject);
+    res.render("index", handlebarsObject);
   });
 });
 

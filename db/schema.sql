@@ -1,3 +1,4 @@
+DROP DATABASE if exists fourteeners_db;
 CREATE DATABASE fourteeners_db;
 USE fourteeners_db;
 
