@@ -1,38 +1,50 @@
-<h1>The Mountains Are Calling!</h1>
+<div>
+  <h1 class="title">The Mountains Are Calling!</h1>
+</div>
 
-<h2>Fourteeners That Want You to Summit Them</h2>
+<div class="tobeclimbed">
+  <h2>Fourteeners You Want to Summit</h2>
 
-{{!-- <ul>
-  {{#each fourteeners}}
-    {{#unless climbed}}
-      {{> fourteeners/fourteener-block climbed=true}}
+  <ul>
+    {{#each fourteeners}}
+    {{#unless this.climbed}}
+    <li>
+      {{this.name}}
+      <button type="button" class="change-climbed" data-id="{{this.id}}" data-climbed="{{climbed}}">I summited this!</button>
+
+      </button>
+    </li>
     {{/unless}}
-  {{/each}}
-</ul>
+    {{/each}}
+  </ul>
+</div>
 
-<h2>Summited Fourteeners</h2>
+<div class="climbed">
+  <h2>Summited Fourteeners</h2>
 
-<ul>
-  {{#each fourteeners}}
-    {{#if climbed}}
-      {{> fourteeners/fourteener-block climbed=false}}
+  <ul>
+    {{#each fourteeners}}
+    {{#if this.climbed}}
+    <li>
+      {{this.name}}
+    </li>
     {{/if}}
-  {{/each}}
-</ul> --}}
+    {{/each}}
+  </ul>
+</div>
 
-<h2>Add a 14er</h2>
+
+<h2>Add a 14er to the List</h2>
 <form class="create-form">
-
   <div class="form-group">
     <label for="14er">14er Name:</label>
     <input type="text" id="14er" name="name">
   </div>
-
   <div class="form-group">
     <label for="climbed">Climbed?</label><br>
     <input type="radio" name="climbed" value="1" checked> Summited!<br>
     <input type="radio" name="climbed" value="0"> Waiting to be summited.
   </div>
 
-  <button type="submit">Add 14er</button>
+  <button type="submit" name="add">Add 14er</button>
 </form>

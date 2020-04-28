@@ -1,11 +1,13 @@
 .body {
-	background-color: orange;
+	background-color: whitesmoke;
 	margin: 0px;
 	padding: 0px;
-}
+	}
 
 .title {
-	color: red;
+	font-family: fantasy;
+	color: black;
+	font-weight: bolder;
 }
 
 .tobeclimbed {
@@ -31,3 +33,10 @@
 	width: 250px;
 	height: 50px;
 }
+
+ul {
+	font-size: larger;
+	font-weight: bolder;
+	font-family: fantasy;
+}
+

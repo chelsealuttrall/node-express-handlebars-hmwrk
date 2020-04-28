@@ -1,24 +1,23 @@
+
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
 $(function() {
     $(".change-climbed").on("click", function(event) {
-      var id = $(this).data("id");
-      var newClimbed = $(this).data("newclimbed");
-  
-      var newClimbedState = {
-        climbed: newClimbed
+      event.preventDefault();
+      let id = $(this).data("id");
+      console.log(id);
+      let newClimbedState= {
+        climbed:1
       };
-  
+
       // Send the PUT request.
-      $.ajax("/api/fourteeners/" + id, {
+      $.ajax("/api/14ers/" + id, {
         type: "PUT",
         data: newClimbedState
-      }).then(
-        function() {
-          console.log("changed climbed to", newClimbed);
+      }).then
+         console.log("changed climbed to", newClimbedState);
           // Reload the page to get the updated list
           location.reload();
-        }
-      );
+      
     });
   
     $(".create-form").on("submit", function(event) {
@@ -31,7 +30,7 @@ $(function() {
       };
   
       // Send the POST request.
-      $.ajax("/api/fourteeners", {
+      $.ajax("/api/14ers", {
         type: "POST",
         data: newFourteener
       }).then(
